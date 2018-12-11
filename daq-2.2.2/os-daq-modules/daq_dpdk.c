@@ -301,7 +301,7 @@ static int start_device(Dpdk_Interface_t *dpdk_intf, DpdkDevice *device) {
   if (dpdk_intf->promisc_flag)
     rte_eth_promiscuous_enable(port);
 
-  ret = SetupFilter(device->port, rx_queues, &error);
+  ret = 0; //remove filter for VF ret = SetupFilter(device->port, rx_queues, &error);
   if (ret != 0) {
     DPE(dpdk_intf->errbuf, "%s: Couldn't setup filters for port %d - \"%s\"\n", __FUNCTION__, port, error.message);
     goto err;
