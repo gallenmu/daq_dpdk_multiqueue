@@ -158,7 +158,7 @@ if test "$enable_dpdk_module" = yes; then
     if test "$enable_dpdk_module" = yes; then
 	CPPFLAGS="${CPPFLAGS} -I${RTE_SDK}/x86_64-native-linuxapp-gcc/include"
 	DPDK_LDFLAGS="-L${RTE_SDK}/x86_64-native-linuxapp-gcc/lib"
-	STATIC_LIBS="${STATIC_LIBS} -lsfbpf ${DPDK_LDFLAGS} -Wl,--as-needed,--whole-archive,${RTE_SDK}/x86_64-native-linuxapp-gcc/lib/libdpdk.a,--no-whole-archive -L/opt/napatech3/lib -lntapi -lntos -lpthread -lrt -lnuma -lm"
+	STATIC_LIBS="${STATIC_LIBS} -lsfbpf ${DPDK_LDFLAGS} -Wl,--as-needed,--whole-archive,${RTE_SDK}/x86_64-native-linuxapp-gcc/lib/libdpdk.a,--no-whole-archive -L/opt/napatech3/lib -lpthread -lrt -lnuma -lm"
         CFLAGS="${CFLAGS} -std=gnu99 -Wno-pedantic"
     fi
 fi
