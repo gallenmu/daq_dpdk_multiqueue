@@ -863,9 +863,9 @@ static int dpdk_daq_acquire(void *handle, int cnt, DAQ_Analysis_Func_t callback,
           verdict = callback(user, &daqhdr, data);
 
 
-          if (verdict != DAQ_VERDICT_PASS) {
-            printf("VERDICT: %u received\n", verdict);
-          }
+          //if (verdict != DAQ_VERDICT_PASS) {
+          //  printf("VERDICT: %u received\n", verdict);
+          //}
           if (verdict >= MAX_DAQ_VERDICT)
             verdict = DAQ_VERDICT_PASS;
           dpdk_intf->stats.verdicts[verdict]++;
