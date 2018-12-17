@@ -175,7 +175,7 @@ static int SetupFilter(uint8_t port, uint8_t numQueues, struct rte_flow_error *e
   uint16_t queues[RTE_ETHDEV_QUEUE_STAT_CNTRS];
 
   if (numQueues > RTE_ETHDEV_QUEUE_STAT_CNTRS) {
-    printf("too many queues needed. reduce number of threads")
+    printf("too many queues needed. reduce number of threads");
     error->type = RTE_FLOW_ERROR_TYPE_UNSPECIFIED;
     error->message = "To many queues needed. Reduce the number threads\n";
     return -1;
