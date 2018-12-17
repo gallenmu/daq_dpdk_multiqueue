@@ -175,6 +175,7 @@ static int SetupFilter(uint8_t port, uint8_t numQueues, struct rte_flow_error *e
   uint16_t queues[RTE_ETHDEV_QUEUE_STAT_CNTRS];
 
   if (numQueues > RTE_ETHDEV_QUEUE_STAT_CNTRS) {
+    printf("too many queues needed. reduce number of threads")
     error->type = RTE_FLOW_ERROR_TYPE_UNSPECIFIED;
     error->message = "To many queues needed. Reduce the number threads\n";
     return -1;
@@ -212,11 +213,11 @@ static int SetupFilter(uint8_t port, uint8_t numQueues, struct rte_flow_error *e
   if (rte_flow_isolate(port, 1, error) < 0) {
     error->type = RTE_FLOW_ERROR_TYPE_UNSPECIFIED;
     error->message = "Isolate port failed\n";
-    return -1;
+    //IGNORE return -1;
   }
 
   if (rte_flow_create(port, &attr, pattern, actions, error) == NULL) {
-    return -1;
+    //IGRNORE return -1;
   }
   return 0;
 }
@@ -301,7 +302,7 @@ static int start_device(Dpdk_Interface_t *dpdk_intf, DpdkDevice *device) {
   if (dpdk_intf->promisc_flag)
     rte_eth_promiscuous_enable(port);
 
-  ret = 0; //remove filter for VF ret = SetupFilter(device->port, rx_queues, &error);
+  ret = SetupFilter(device->port, rx_queues, &error);
   if (ret != 0) {
     DPE(dpdk_intf->errbuf, "%s: Couldn't setup filters for port %d - \"%s\"\n", __FUNCTION__, port, error.message);
     goto err;
