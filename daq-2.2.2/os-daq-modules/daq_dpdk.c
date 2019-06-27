@@ -55,7 +55,7 @@
 #define RX_RING_SIZE 256
 #define TX_RING_SIZE 256
 #define NUM_MBUFS 8192
-#define BURST_SIZE 32
+#define BURST_SIZE 1
 
 #define TAKE_LOCK(lck) {int _rval; do {_rval = rte_atomic16_cmpset(lck, 0, 1);} while (unlikely(_rval == 0));}
 #define RELEASE_LOCK(lck) *(lck) = 0;
